@@ -37,7 +37,10 @@ const Home = (props) => {
     if (authUser.length && authUser[0].password === login.password)
       check = true;
     if (check) setShowLogin(false);
-    else setShowLogin(true);
+    else {
+      alert("Invalid Credentials");
+      setShowLogin(true);
+    }
   };
 
   const homeStyle = {
@@ -60,7 +63,7 @@ const Home = (props) => {
       {showLogin ? (
         <LogIn setUser={LogInUser} />
       ) : (
-        <ShowItems items={props.items} />
+        <ShowItems items={props.items} addToCart={props.addToCart} />
       )}
     </div>
   );

@@ -1,12 +1,15 @@
 import React from "react";
 
-const Items = ({ item }) => {
+const Items = ({ item, addToCart }) => {
   const itemStyle = {
     maxWidth: "70vw",
   };
   const imageSize = {
     maxWidth: "400px",
     maxHeight: "350px",
+  };
+  const outOfStockError = () => {
+    alert("Cannot add this item to the cart.");
   };
   return (
     <div className="mt-5">
@@ -25,8 +28,27 @@ const Items = ({ item }) => {
                   return <li key={e}>{e}</li>;
                 })}
               </ul>
+              <h5
+                className={
+                  item.quantity ? "ms-2 text-info" : "ms-2 text-warning"
+                }
+              >
+                {item.quantity
+                  ? `${item.quantity} pieces left`
+                  : `Out of Stock`}
+              </h5>
               <p className="ps-5">
-                <button type="button" className="btn btn-outline-warning">
+                <button
+                  type="button"
+                  className={
+                    item.quantity
+                      ? "btn btn-outline-success"
+                      : "btn btn-outline-danger"
+                  }
+                  onClick={
+                    item.quantity ? () => addToCart(item) : outOfStockError
+                  }
+                >
                   Add to Cart
                 </button>
               </p>
