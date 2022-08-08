@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const About = (props) => {
   const aboutStyle = {
     minHeight: "88vh",
   };
-  props.search(false);
+  useEffect(() => {
+    props.search(false);
+  });
   return (
     <div className="container" style={aboutStyle}>
       <h3 className="text-center py-4">
