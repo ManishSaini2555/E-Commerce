@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import LogIn from "./LogIn.js";
+import Cart from "./Cart.js";
 import ShowItems from "./ShowItems.js";
 
 const Home = (props) => {
@@ -37,30 +38,28 @@ const Home = (props) => {
     if (authUser.length && authUser[0].password === login.password)
       check = true;
     if (check) setShowLogin(false);
-    else setShowLogin(true);
+    else {
+      alert("Invalid Credentials");
+      setShowLogin(true);
+    }
   };
 
   const homeStyle = {
+    marginTop: "60px",
     minHeight: "88vh",
   };
 
   if (!showLogin) props.search(true);
   else props.search(false);
 
-  // if (
-  //   authorisedUser.includes(
-  //     (item) => item.email === user.email && item.password === user.password
-  //   )
-  // )
-  //   setShowLogin(false);
-  // else setShowLogin(true);
-
   return (
     <div className="container" style={homeStyle}>
       {showLogin ? (
         <LogIn setUser={LogInUser} />
+      ) : props.showCart ? (
+        <Cart list={props.cart} setCartToggle={props.setCartToggle} />
       ) : (
-        <ShowItems items={props.items} />
+        <ShowItems items={props.items} addToCart={props.addToCart} />
       )}
     </div>
   );
