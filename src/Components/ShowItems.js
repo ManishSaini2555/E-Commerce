@@ -3,8 +3,8 @@ import Items from "./Items.js";
 
 const ShowItems = ({ items, addToCart }) => {
   return (
-    <div className="mt-5">
-      <h3>Available Items: </h3>
+    <div className="pt-3">
+      <h3>Item List: </h3>
       {items.map((item) => {
         return <Items key={item.key} item={item} addToCart={addToCart} />;
       })}
