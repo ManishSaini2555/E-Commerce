@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 const About = (props) => {
   const aboutStyle = {
     minHeight: "88vh",
+    marginTop: "60px",
   };
   useEffect(() => {
     props.search(false);
