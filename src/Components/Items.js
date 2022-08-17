@@ -32,11 +32,22 @@ const Items = ({ item, addToCart }) => {
                 className={
                   item.quantity ? "ms-2 text-info" : "ms-2 text-warning"
                 }
+                style={{ display: "inline-block" }}
               >
                 {item.quantity
                   ? `${item.quantity} pieces left`
                   : `Out of Stock`}
               </h5>
+              {item.addedToCart ? (
+                <h5
+                  className="ms-5 text-success"
+                  style={{ display: "inline-block" }}
+                >
+                  {item.addedToCart} item added to cart.
+                </h5>
+              ) : (
+                ""
+              )}
               <p className="ps-5">
                 <button
                   type="button"

@@ -52,9 +52,7 @@ const Cart = (props) => {
               className="btn btn-warning"
               onClick={() => {
                 alert("Order Placed Successfully");
-                setTimeout(() => {
-                  window.location.reload();
-                }, 500);
+                window.location.reload();
               }}
             >
               Place Order and Pay
